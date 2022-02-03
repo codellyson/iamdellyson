@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function portfolio() {
   return (
     <div className={"container"}>
       <Head>
@@ -14,17 +14,19 @@ export default function Home() {
       <main className={"main"}>
         <h1 className={"title"}>I am Dellyson</h1>
 
-        <p className={"description"}>Welcome to my website!</p>
+        <p className={"description"}>Projects I have worked on!</p>
 
         <div className={"grid"}>
-          <article className={"styles"}>
-            <h1>A little information about me</h1>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Dignissimos dolorem suscipit corrupti voluptas quod maiores amet
-              velit, consequatur ipsam distinctio.
-            </p>
-          </article>
+          <Link href="https://www.druve.com.ng">
+            <a className={"card"}>
+              <h2>Druve &rarr;</h2>
+              <p>Advertize Across WhatsApp Statuses</p>
+            </a>
+          </Link>
+          <a href="https://www.ajebuta.com" className={"card"}>
+            <h2>Ajebuta &rarr;</h2>
+            <p>Connect customers to nearby service providers, professionals</p>
+          </a>
         </div>
       </main>
 
