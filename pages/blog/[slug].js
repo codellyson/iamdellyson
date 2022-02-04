@@ -18,6 +18,9 @@ const components = {
 function post({ source, frontMatter }) {
   return (
     <Blog>
+      <Head>
+        <title>{frontMatter.title}</title>
+      </Head>
       <h1>{frontMatter.title}</h1>
       {frontMatter.description && (
         <p className="description">{frontMatter.description}</p>

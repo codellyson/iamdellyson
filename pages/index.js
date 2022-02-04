@@ -18,9 +18,11 @@ export default function Home() {
           <article className={"styles"}>
             <h1>A little information about me</h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Dignissimos dolorem suscipit corrupti voluptas quod maiores amet
-              velit, consequatur ipsam distinctio.
+              I am self-motivated Software Developer looking forward to seek a
+              position in a reputable company where I can subsequently enhance
+              and use my skills, outstanding competencies and knowledge gained
+              over the years to work on the intervention projects, amongst
+              others.
             </p>
           </article>
         </div>

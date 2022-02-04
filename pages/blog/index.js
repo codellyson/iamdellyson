@@ -4,12 +4,14 @@ import path from "path";
 import grayMatter from "gray-matter";
 import Link from "next/link";
 import { postFilePath, POST_PATH } from "../../utils/mdxUtils";
+import Head from "next/head";
 
 function index({ posts }) {
-  console.log(posts);
-
   return (
     <section>
+      <Head>
+        <title>Blogs</title>
+      </Head>
       {posts.map((item, index) => (
         <div className="blog-post" key={index}>
           <Link
@@ -29,7 +31,6 @@ export async function getStaticProps() {
   const posts = postFilePath.map((filePath) => {
     const source = fs.readFileSync(path.join(POST_PATH, filePath));
     const { data, content } = grayMatter(source);
-    console.log("Data:", data);
     return {
       data,
       content,
