@@ -1,5 +1,7 @@
-@import "./reset";
-@import "./util";
+@import "./abstracts/mixins";
+@import "./base/reset";
+@import "./abstracts/util";
+@import "./abstracts/variables";
 
 // Components
 @import "./components/navbar";

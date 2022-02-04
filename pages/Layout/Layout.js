@@ -1,46 +1,31 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-
-import Logo from "../../assets/images/logo.png";
+import Navbar from "../../components/Navbar";
 function Layout({ children, ...rest }) {
   return (
     <>
-      <nav className="nav">
-        <div
-          className="nav-brand"
-          style={{
-            width: 200,
-          }}
-        >
-          <Image src={Logo} alt="Logo" />
-        </div>
-        <ul className={"navMenu"}>
-          <li>
-            <Link href="/">
-              <a> Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/portfolio">
-              <a> Work</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog">
-              <a> Blog</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">
-              <a> Contact Me!</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <main className={"main"} {...rest}>
+      <Navbar />
+      <main
+        className={"container"}
+        {...rest}
+        style={{
+          minHeight: "100vh",
+        }}
+      >
         {children}
       </main>
+      <footer className={"footer"}>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{" "}
+          <span className={"logo"}>
+            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          </span>
+        </a>
+      </footer>
     </>
   );
 }

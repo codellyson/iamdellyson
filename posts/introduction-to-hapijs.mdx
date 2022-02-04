@@ -1,3 +1,8 @@
+---
+title: Introduction to Hapi.js
+author: Isiaka Lukman Bamidele
+---
+
 In recent times I was looking to change up a little bit and test my coding ability with another Node.js framework that is not Express, I have always used Express.js in many of my projects, in my search, I discovered Hapi.js and I am loving it already currently using it in one of my projects, one thing I noticed is that most of the article, tutorials or blogpost on Hapi are outdated because I remembered how I struggle with some implementations it was only after I read the docs thoroughly I was then able to solve my problem.
 
 Hapi is a Node.js framework use in creating server-side web applications, it was _"originally developed to handle Walmart’s Black Friday scale, Hapi continues to be the proven choice for enterprise-grade backend needs"_, Hapi is known for its simplicity and security, and satisfaction. Hapi is very secured due to the fact that all the dependencies that can be used with Hapi are all from Hapi's own verified contributors.
@@ -39,32 +44,31 @@ We will start by creating a server and this server will only return the "Hello W
 First, create a `server.js` file in your project folder, copy and paste (I recommend you type them) the content below into the `server.js` file
 
 ```js
-  const Hapi = require("@hapi/hapi");
-  const Port = process.env.PORT || 3000;
+const Hapi = require("@hapi/hapi");
+const Port = process.env.PORT || 3000;
 
-  //create a server config
+//create a server config
 
-  const server = Hapi.server({
-    host: "localhost",
-    port: Port,
-  });
+const server = Hapi.server({
+  host: "localhost",
+  port: Port,
+});
 
 //other logic here
 
-   const config = async () => {
-    await server.start();
-     console.log("Server listening on port ", server.info.uri);
-   };
+const config = async () => {
+  await server.start();
+  console.log("Server listening on port ", server.info.uri);
+};
 
 //start the server
-   config()
+config();
 
 // handling unhandledRejection Error
 process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
 });
-
 ```
 
 In the first line, we require the Hapi dependency and also set the port on which our server will be listening on to the `Port` variable. In the next line, we created the server which takes in an object where we passed in our `port` and `host`, the config function whenever its called will run our server on the `port:3000`. The last line basically handles an `unhandledRejection` error and only gets called whenever the system detects one and also automatically quits the process.
@@ -81,18 +85,16 @@ server.route({
     return "hello world";
   },
 });
-
 ```
 
 The `server` function has a `route` properties which take in an object or array of an object or we can get more sophisticated and create another file which exports an array of object and then uses it as a route, these objects have three important properties which includes; `method` which denote the type of request we are making to the route, it can either be a `GET`, `POST`,`PUT`, and a `DELETE` request, the `path` property signifies the endpoints and a `handler` method. The `handler` is where we handle the main business logic that is, the incoming request and the response we are sending back to the user. The `handler` method takes in two arguments the `request` and `h` keyword respectively you can name them anything you want but I like to leave it like that to avoid getting myself confused, the `request` object contains some handful of properties, for instance, when you submit a form data to the server you can access it with `request.payload`, the data are available in the payload property of the `request object` and let's say you have parameters or queries available in your URL you can do
 
 ```js
 // for parameters in the URL
-request.params
+request.params;
 
 // for queries in the URL
-request.query
-
+request.query;
 ```
 
 There are also lots more you can do with the request objects. The `h` object also contains some handful of response toolkit, for instance, you can return a view with the `h.view()` or a static file with the `h.file()` method, most importantly a `handler` method must return a value, promise, or an error using the `return` keyword. In the example above we only return and "Hello World" text,
@@ -102,31 +104,30 @@ There are also lots more you can do with the request objects. The `h` object als
 We can also pass parameters to routes `http://localhost:3000/dellyson` we can grab the value of this parameter on the server with `request.params` like so
 
 ```js
- server.route({
-    method: "GET",
-    path: "/{name}",
-    handler: (request, h) => {
-      return request.params.name;
-    },
-  });
+server.route({
+  method: "GET",
+  path: "/{name}",
+  handler: (request, h) => {
+    return request.params.name;
+  },
+});
 ```
 
 You can as well pass in a query to your routes `http://localhost:3000?name=dellyson&age=20` we can grab the values from queries like so on the server
 
 ```js
 server.route({
-    method: "GET",
-    path: "/re",
-    handler: (request, h) => {
-      const name = request.query.name;
-      const age = request.query.age
+  method: "GET",
+  path: "/re",
+  handler: (request, h) => {
+    const name = request.query.name;
+    const age = request.query.age;
     return {
-             name, age
-      }
-
-    },
-  });
-
+      name,
+      age,
+    };
+  },
+});
 ```
 
 The above snippet returns a JSON response.
@@ -175,8 +176,6 @@ copy and paste this content into your `index.html` file
     <script src="./main.js"></script>
   </body>
 </html>
-
-
 ```
 
 Also in your `style.css` file
@@ -194,8 +193,6 @@ body {
   max-width: 56rem;
   margin: 2rem auto;
 }
-
-
 ```
 
 We'll leave our `main.js` empty for now.
@@ -203,7 +200,7 @@ We'll leave our `main.js` empty for now.
 Let us modify our `server.js` file. First, require `@hapi/inert`.
 
 ```js
-const Inert  = require("@hapi/inert")
+const Inert = require("@hapi/inert");
 ```
 
 ```js
@@ -222,24 +219,22 @@ Take note of how I added a `routes` property to the `Hapi.server()` config what 
 inside the `config` function before the `server.start()`,
 
 ```js
-await server.register(Inert)
-
+await server.register(Inert);
 ```
 
 Now we can add the route we want the server to serve the static file from
 
 ```js
- // static file route
-  server.route({
-    method: "GET",
-    path: "/{params*}",
-    handler: {
-      directory: {
-        path: ".",
-      },
+// static file route
+server.route({
+  method: "GET",
+  path: "/{params*}",
+  handler: {
+    directory: {
+      path: ".",
     },
-  });
-
+  },
+});
 ```
 
 What the snippet above does is basically search for the `public` directly on every route and the directly passed into the `handler` method basically refers to the public directory, this is where the `Inert` plugin looks for files to serve. If you omit the `await server.register(Inert)` line, you will get an `unknown handler: directory` in the console.
@@ -248,13 +243,12 @@ Now, let's modify our home route to render our HTML file.
 
 ```js
 server.route({
-    method: "GET",
-    path: "/",
-    handler: (request, h) => {
-      return h.file("./index.html");
-    },
-  });
-
+  method: "GET",
+  path: "/",
+  handler: (request, h) => {
+    return h.file("./index.html");
+  },
+});
 ```
 
 ![static.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1601600690265/1vU1OoKUr.png)
@@ -279,7 +273,7 @@ const server = Hapi.server({
 
 const config = async () => {
   await server.register(Inert);
-   // static file route
+  // static file route
   server.route({
     method: "GET",
     path: "/{params*}",
@@ -321,7 +315,6 @@ process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
 });
-
 ```
 
 ### Wrap up
