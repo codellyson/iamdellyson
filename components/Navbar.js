@@ -46,10 +46,7 @@ function Navbar() {
             <Link href="/blog">
               <a
                 className={
-                  router.pathname === "/blog" ||
-                  router.pathname == "/blog/[slug]"
-                    ? "nav-link active"
-                    : "nav-link"
+                  router.pathname === "/blog" ? "nav-link active" : "nav-link"
                 }
               >
                 Blog
