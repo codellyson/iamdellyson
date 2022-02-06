@@ -1,41 +1,41 @@
 ---
 title: Add Views to your Hapi.js Project with Vision
+description: Learn how to add views to your Hapi.js project using the Vision plugin.
 author: Isiaka Lukman Bamidele
+date: Fri, 20 Jan 2017 09:00:00 GMT
+tags: [Hapi.js, Nodejs, JavaScript, vision, views]
+time: ~1 minute
 ---
 
-When creating web applications using backend frameworks like `Express.js` it's normal for developers to want to add views to their various projects and `Hapi.js` is not exempted, you can add views to your Hapi projects too in fact Hapi supports multiple and various templating engines such as `Handlebars`(my favorite), `Nunjucks`, `Pug`, `EJS` etc.
+When creating web applications using backend frameworks like <InlineCode>Express.js</InlineCode> it's normal for developers to want to add views to their various projects and <InlineCode>Hapi.js</InlineCode> is not exempted, you can add views to your Hapi projects too in fact Hapi supports multiple and various templating engines such as <InlineCode>Handlebars</InlineCode> (my favorite), <InlineCode>Nunjucks</InlineCode>, <InlineCode>Pug</InlineCode>, <InlineCode>EJS</InlineCode> etc.
 
-As I mentioned in my previous post, creating Views is not actually built into Hapi core functionality, we need to add a plugin for it called `Vision`.
+As I mentioned in my previous post, creating Views is not actually built into Hapi core functionality, we need to add a plugin for it called <InlineCode>Vision</InlineCode>.
 
 > Vision is a templates rendering plugin for hapi.js. Vision decorates the server, request, and h response toolkit interfaces with additional methods for managing view engines that can be used to render templated responses. [hapi](https://hapi.dev/tutorials/views/?lang=en_US)
 
 If you are just joining us, I'd advise you to go through the previous [post](https://dellyson.hashnode.dev/introduction-to-hapijs-ckfzzde8x016dmps1g320h4ct).
 
-Before we can start using vision in our project we need to first install a couple of dependencies, we are going to be using `handlebars.js` as our template engine.
+Before we can start using vision in our project we need to first install a couple of dependencies, we are going to be using <InlineCode>handlebars.js</InlineCode> as our template engine.
 
-```js
-yarn add @hapi/vision handlebars --save
-```
+<Code>{`yarn add @hapi/vision handlebars --save`}</Code>
 
 The command above installed the necessary dependencies we need. Now let's get our hands dirty.
 
-Firstly, we require the `Vision` dependency
+Firstly, we require the <InlineCode>Vision</InlineCode> dependency
 
-<Code>const Vision = require("@hapi/vision");</Code>
-Then we modify our `server.js` file.
+<Code language="javascript">const Vision = require("@hapi/vision");</Code>
+Then we modify our <InlineCode>server.js</InlineCode> file.
 
 Before anything else, we need to register our vision plugin
 
-```js
-await server.register(Vision);
-```
+<Code language="javascript">await server.register(Vision);</Code>
 
 or else our views won't work, we will just keep on getting errors, moreso, the Vision plugin gives us access to some API that we can use to render our template on the fly.
 
 Our project structure will change up a bit
 
-```
-Hapi_Project
+<Code language="javascript">
+  {`Hapi_Project
 |__node_modules
 |__server.js
 |__public
@@ -48,7 +48,7 @@ Hapi_Project
 |  |  |__navbar.html
 |  |__index.html
 |__ package.json`}
-```
+</Code>
 
 Configuring our views.
 
@@ -68,9 +68,9 @@ Configuring our views.
 
 </Code>
 
-The Hapi views method takes in an object where we pass in our various configurations, now let's go through them one after the other. The `engines` property is for setting the template engine of your choice which we used `handlebars` for. The `relativeTo` indicates the directory in which we are going to be serving our templates from and that is the `views` folder. `partialsPath` indicates the directory containing the our partial files, setting `layout` to true tells vision that we indeed want to use the layout templating style which you will see in the snippet below and also we need to provide the `layoutPath` which points to the directory we are serving the `layout.html` file from and it must be named `layout.html` else we get an error.
+The Hapi views method takes in an object where we pass in our various configurations, now let's go through them one after the other. The <InlineCode>engines</InlineCode> property is for setting the template engine of your choice which we used <InlineCode>handlebars</InlineCode> for. The <InlineCode>relativeTo</InlineCode> indicates the directory in which we are going to be serving our templates from and that is the <InlineCode>views</InlineCode> folder. <InlineCode>partialsPath</InlineCode> indicates the directory containing the our partial files, setting <InlineCode>layout</InlineCode> to true tells vision that we indeed want to use the layout templating style which you will see in the snippet below and also we need to provide the <InlineCode>layoutPath</InlineCode> which points to the directory we are serving the <InlineCode>layout.html</InlineCode> file from and it must be named <InlineCode>layout.html</InlineCode> else we get an error.
 
-Inside the `layout.html` file, paste the following
+Inside the <InlineCode>layout.html</InlineCode> file, paste the following
 
 <Code language="html">
   {`
@@ -88,7 +88,7 @@ Inside the `layout.html` file, paste the following
   </html>`}
 </Code>
 
-we are going to modify the `/views/index.html` as well
+we are going to modify the <InlineCode>/views/index.html</InlineCode> as well
 
 <Code language="html">
   {`
@@ -99,7 +99,7 @@ we are going to modify the `/views/index.html` as well
   `}
 </Code>
 
-and also, we modify the `/views/partials/navbar.html` as well.
+and also, we modify the <InlineCode>/views/partials/navbar.html</InlineCode> as well.
 
 <Code language="html">
   {`
@@ -116,7 +116,8 @@ and also, we modify the `/views/partials/navbar.html` as well.
   </nav>
 `}
 </Code>
-The `HTML` code are limited because this is just an introductory post. Our `CSS`
+The <InlineCode>HTML</InlineCode> code are limited because this is just an introductory
+post. Our <InlineCode>CSS</InlineCode>
 remains as the previous file we had from the first part of this post.
 
 We can now render our view like so.
@@ -136,7 +137,7 @@ We can now render our view like so.
 `}
 </Code>
 
-In your browser, you can now navigate to the `http://localhost:3000/` and see a similar output as this.
+In your browser, you can now navigate to the <InlineCode>http://localhost:3000/</InlineCode> and see a similar output as this.
 
 ![static.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1601600690265/1vU1OoKUr.png)
 
@@ -144,7 +145,7 @@ In your browser, you can now navigate to the `http://localhost:3000/` and see a 
 
 You can also pass a variable or an array of object to your views and Handlebars will parse it dynamically to the views.
 
-Let's change up our `server.js` file a bit.
+Let's change up our <InlineCode>server.js</InlineCode> file a bit.
 
 <Code language="javascript">
   {`
@@ -183,7 +184,7 @@ server.route([
 `}
 </Code>
 
-And our `index.html` file
+And our <InlineCode>index.html</InlineCode> file
 
 <Code language="javascript">
   {`

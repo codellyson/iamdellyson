@@ -55,11 +55,22 @@
           }
           &.active {
             color: $primary-color;
+            border-bottom: solid 2px $primary-color;
           }
         }
       }
     }
     .nav-close-trigger {
+      width: 3.5rem;
+      height: 3.5rem;
+      fill: $primary-color;
+      transition: fill 0.15s ease;
+      margin-top: 3rem;
+      &:hover,
+      &:focus {
+        fill: $primary-color;
+      }
+
       @include for-tablet-portrait-up {
         display: none;
       }

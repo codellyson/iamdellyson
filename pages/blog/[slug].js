@@ -11,8 +11,9 @@ import { postFilePath, POST_PATH } from "../../utils/mdxUtils";
 import Blog from "../Layout/Blog";
 const components = {
   a: CustomLink,
-  TestComponent: dynamic(() => import("../../components/TestComponent")),
   Code: dynamic(() => import("../../components/Code")),
+  p: (props) => <p {...props} className="blog-paragraph" />,
+  InlineCode: dynamic(() => import("../../components/InlineCode")),
   Head,
 };
 function post({ source, frontMatter }) {
@@ -20,6 +21,17 @@ function post({ source, frontMatter }) {
     <Blog>
       <Head>
         <title>{frontMatter.title}</title>
+        <meta property="og:site_name" content="I am Dellyson" />
+        <meta property="og:title" content={frontMatter.title} />
+        <meta property="og:description" content={frontMatter.description} />
+        <meta property="og:url" content={`iamdellyson.com/blog`} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="article:publisher"
+          content="https://www.iamdellyson.com"
+        />
+        <meta property="article:section" content="Coding" />
+        <meta property="article:tag" content={frontMatter.tags} />
       </Head>
       <h1>{frontMatter.title}</h1>
       {frontMatter.description && (

@@ -1,0 +1,30 @@
+.blog-post-title {
+  padding: 2rem;
+  border: 1px solid $light-grey;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  &:hover,
+  &:hover + .blog-post-link {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+  .blog-post-link {
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 1.5rem;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $primary-color;
+    }
+  }
+}
+.blog-paragraph {
+  padding: 1rem 0;
+}
+.blog-inline-code {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0 0.3rem;
+}
+// .blog-code

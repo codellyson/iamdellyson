@@ -13,13 +13,14 @@ function index({ posts }) {
         <title>Blogs</title>
       </Head>
       {posts.map((item, index) => (
-        <div className="blog-post" key={index}>
+        <div className="blog-post-title" key={index}>
           <Link
             as={`/blog/${item.filePath.replace(/\.mdx?$/, "")}`}
             href={`/blog/[slug]`}
           >
-            <a>{item.data.title}</a>
+            <a className="blog-post-link">{item.data.title}</a>
           </Link>
+          <p className="blog-description">{item.data.description}</p>
         </div>
       ))}
     </section>
