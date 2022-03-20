@@ -1,15 +1,19 @@
 .post-card {
   border: solid 1px rgb(255, 255, 255);
   border-radius: 5px;
-  padding: 1rem 0;
+  padding: 1rem;
   background-color: #fff;
-  border-bottom: solid 1px #ccc;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
   .post-card-title {
     font-size: 1.5rem;
     font-weight: bold;
     a {
       text-decoration: none;
       color: #21243d;
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
   .post-meta-data {
@@ -39,24 +43,23 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  // align-items: center;
-  border-bottom: solid 1px #ccc;
+  // border: solid 1px #ccc;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   gap: 1rem;
+  margin-bottom: 1rem;
   @include for-tablet-portrait-up {
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
   }
   .featured-work-card-image {
-    height: 180px;
-    max-height: auto;
     min-width: 248px;
     & span {
       border-radius: 5px;
     }
   }
   .featured-work-card-content {
-    padding: 2rem 0;
+    // padding: 2rem 0;
     h4 {
       font-size: 1.875rem;
       font-weight: bold;
@@ -64,16 +67,19 @@
       a {
         text-decoration: none;
         color: #21243d;
+
+        &:hover {
+          color: $primary-color;
+        }
       }
     }
-
     .work-meta-data {
       display: flex;
-      gap: 2rem;
-      padding: 1rem 0;
+      gap: 1rem;
+      padding: 0.5rem 0;
       align-items: center;
       .work-date {
-        font-size: 1.125rem;
+        font-size: 0.9rem;
         font-weight: light;
         background: #21243d;
         border-radius: 15px;
@@ -82,7 +88,12 @@
         display: inline-block;
       }
       .work-type {
-        font-size: 1rem;
+        display: flex;
+        gap: 0.5rem;
+        .btn {
+          font-size: 0.9rem;
+          padding: 0.1875rem;
+        }
         font-weight: light;
       }
     }

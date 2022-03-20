@@ -1,22 +1,31 @@
 .header {
   padding: 3rem 0;
   margin: 3rem 0;
+  background-color: #edf7fa;
+
   .header-content {
-    display: grid;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column-reverse;
     align-items: center;
-    justify-content: center;
     text-align: center;
     gap: 2rem;
     @include for-tablet-portrait-up {
-      grid-template-columns: auto 400px;
+      display: grid;
+      grid-template-columns: auto 310px;
+      gap: 5rem;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 2rem;
+      @include for-tablet-portrait-up {
+        font-size: 3rem;
+      }
     }
     .side-one {
       h1 {
-        font-size: 3rem;
+        font-size: 2rem;
+        @include for-tablet-portrait-up {
+          font-size: 3rem;
+        }
       }
       p {
         padding: 1.5rem 0;
@@ -28,6 +37,10 @@
       aspect-ratio: 1;
       position: relative;
       padding: 1rem;
+      height: 300px;
+      @include for-tablet-portrait-up {
+        height: auto;
+      }
       & > span {
         position: absolute;
         top: 13%;

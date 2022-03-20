@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import {
   FaFacebookSquare,
@@ -11,6 +12,15 @@ function Footer() {
     <footer>
       <div className="container">
         <div className="footer-content">
+          <div className="footer-logo">
+            <Image
+              src={require("../assets/images/Iamdellyson.jpg")}
+              alt="footer logo"
+              layout={"fixed"}
+              // width={200}
+              // height={100}
+            />
+          </div>
           <div className="icons">
             <FaFacebookSquare />
             <FaInstagramSquare />

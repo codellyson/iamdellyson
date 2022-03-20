@@ -11,7 +11,7 @@ function Layout({ children, ...rest }) {
   }, []);
 
   return (
-    <>
+    <div className="page-wrapper">
       <Navbar />
       <main
         className={""}
@@ -23,7 +23,7 @@ function Layout({ children, ...rest }) {
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

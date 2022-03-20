@@ -67,7 +67,7 @@ export const Card = ({
               <span className="work-type">
                 {tools
                   ? tools.split(",").map((tool) => (
-                      <span key={tool} className="btn btn-default">
+                      <span key={tool} className="btn btn-primary">
                         {tool}
                       </span>
                     ))

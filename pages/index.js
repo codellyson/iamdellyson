@@ -50,8 +50,6 @@ export default function Home() {
               <Image
                 src={require("../assets/images/logo.png")}
                 alt="profile"
-                // width={"500"}
-                // height={300}
                 layout="responsive"
               />
             </div>

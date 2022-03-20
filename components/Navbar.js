@@ -2,15 +2,22 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../assets/images/Iamdellyson.jpg";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaPhone,
+  FaRssSquare,
+  FaSuitcase,
+  FaTimes,
+} from "react-icons/fa";
 import { useRouter } from "next/router";
+
 function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-
+  const closeNav = () => setIsOpen(false);
   return (
     <nav className="nav">
       <div className="container">
@@ -19,7 +26,7 @@ function Navbar() {
             <Image src={Logo} alt="Logo" />
           </Link>
         </div>
-        <ul className={isOpen ? "nav-menu mobile" : "nav-menu"}>
+        <ul className={isOpen ? "nav-menu full" : "nav-menu"}>
           <li className="nav-menu-item">
             <Link href="/blog">
               <a
@@ -29,8 +36,15 @@ function Navbar() {
                     ? "nav-link active"
                     : "nav-link"
                 }
+                onClick={closeNav}
               >
-                Blog
+                <span className={isOpen ? "menu-text show" : "menu-text"}>
+                  {" "}
+                  Blog{" "}
+                </span>
+                <span className="menu-icon">
+                  <FaRssSquare />
+                </span>{" "}
               </a>
             </Link>
           </li>
@@ -40,8 +54,15 @@ function Navbar() {
                 className={
                   router.pathname === "/works" ? "nav-link active" : "nav-link"
                 }
+                onClick={closeNav}
               >
-                Work
+                <span className={isOpen ? "menu-text show" : "menu-text"}>
+                  {" "}
+                  Work
+                </span>{" "}
+                <span className="menu-icon">
+                  <FaSuitcase />
+                </span>
               </a>
             </Link>
           </li>
@@ -53,15 +74,25 @@ function Navbar() {
                     ? "nav-link active"
                     : "nav-link"
                 }
+                onClick={closeNav}
               >
-                Contact
+                <span className={isOpen ? "menu-text show" : "menu-text"}>
+                  {" "}
+                  Contact{" "}
+                </span>
+                <span className="menu-icon">
+                  <FaPhone />
+                </span>
               </a>
             </Link>
           </li>
-          <FaTimes onClick={handleToggle} className="nav-close-trigger" />
         </ul>
         <div className="nav-toggle-container">
-          <FaBars onClick={handleToggle} />
+          {isOpen ? (
+            <FaTimes onClick={handleToggle} />
+          ) : (
+            <FaBars onClick={handleToggle} />
+          )}
         </div>
       </div>
     </nav>

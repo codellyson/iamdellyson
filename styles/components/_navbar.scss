@@ -17,71 +17,81 @@
       justify-content: center;
       align-items: center;
       list-style: none;
-      gap: 1rem;
+      gap: 2rem;
       position: fixed;
-      flex-direction: column;
-      top: 0;
+      background-color: $primary-color;
+      height: 100%;
+      width: 70%;
       bottom: 0;
-      right: 0;
       left: 0;
-      background: $light-grey;
-      opacity: 0;
-      z-index: -4;
-      transform: translateX(-500px);
-      @include for-tablet-portrait-up {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+      z-index: 4;
+      transform: translateX(-100%);
+      transition: transform 0.5s ease-in-out;
+      overflow: hidden;
+      &.full {
         transform: translateX(0);
-        position: static;
-        flex-direction: row;
-        opacity: 1;
-        background-color: transparent;
-        z-index: 1;
       }
-      transition: all 0.2s ease-in-out;
-      &.mobile {
-        z-index: 3;
-        opacity: 1;
+      @include for-tablet-portrait-up {
+        width: auto;
         transform: translateX(0);
       }
       .nav-menu-item {
-        .nav-link {
+        a {
           text-decoration: none;
-          color: inherit;
-          font-size: 1rem;
-          font-weight: 500;
-          transition: color 0.15s ease;
-          &:hover,
-          &:focus {
-            color: $primary-color;
+          color: #ffffff;
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 1rem;
+          .menu-icon {
+            display: none;
           }
           &.active {
-            color: $primary-color;
+            color: #21243d;
+            font-weight: bold;
+          }
+
+          @include for-tablet-portrait-up {
+            .menu-text {
+              opacity: 0;
+              transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out;
+              margin-right: -7.5rem;
+
+              &.show {
+                margin-right: 1rem;
+                opacity: 1;
+              }
+            }
+            .menu-icon {
+              display: block;
+              margin-right: -0.8rem;
+              svg {
+                font-size: 1.5rem;
+              }
+              &:last-child {
+                margin-left: -1rem;
+              }
+            }
           }
         }
       }
     }
-    .nav-close-trigger {
-      width: 3.5rem;
-      height: 3.5rem;
-      fill: $primary-color;
-      transition: fill 0.15s ease;
-      margin-top: 3rem;
-      &:hover,
-      &:focus {
-        fill: $primary-color;
-      }
 
-      @include for-tablet-portrait-up {
-        display: none;
-      }
-    }
     .nav-toggle-container {
       svg {
-        font-size: 2rem;
-        color: $dark-grey;
+        font-size: 1.2rem;
+        color: #fff;
       }
+      background-color: $primary-color;
+      padding: 1rem;
 
       @include for-tablet-portrait-up {
-        display: none;
+        // display: none;
       }
     }
   }
