@@ -1,29 +1,93 @@
-.card {
-  margin: 1rem;
+.post-card {
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 1rem 0;
+  background-color: #fff;
+  border-bottom: solid 1px #ccc;
+  .post-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: #21243d;
+    }
+  }
+  .post-meta-data {
+    display: flex;
+    // flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    @include for-tablet-portrait-up {
+      flex-direction: row;
+    }
+
+    .post-date {
+      font-size: 1rem;
+      font-weight: light;
+    }
+    .post-author {
+      font-size: 1rem;
+      font-weight: light;
+    }
+  }
+}
+
+.featured-work-card {
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 5px;
   padding: 1rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  border-bottom: solid 1px #ccc;
+  gap: 1rem;
+  @include for-tablet-portrait-up {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  .featured-work-card-image {
+    height: 180px;
+    max-height: auto;
+    min-width: 248px;
+    & span {
+      border-radius: 5px;
+    }
+  }
+  .featured-work-card-content {
+    padding: 2rem 0;
+    h4 {
+      font-size: 1.875rem;
+      font-weight: bold;
+      color: #21243d;
+      a {
+        text-decoration: none;
+        color: #21243d;
+      }
+    }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+    .work-meta-data {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 0;
+      align-items: center;
+      .work-date {
+        font-size: 1.125rem;
+        font-weight: light;
+        background: #21243d;
+        border-radius: 15px;
+        color: #fff;
+        padding: 0.5rem;
+        display: inline-block;
+      }
+      .work-type {
+        font-size: 1rem;
+        font-weight: light;
+      }
+    }
+    .work-description {
+      padding: 1rem 0;
+    }
+  }
 }

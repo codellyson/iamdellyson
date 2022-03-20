@@ -1,0 +1,59 @@
+.recent-posts-section {
+  padding: 3rem 0;
+  margin: 3rem 0;
+  background-color: #edf7fa;
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    .post-card {
+      padding: 1rem;
+    }
+  }
+}
+
+.featured-work-section {
+  padding: 3rem 0;
+  margin: 3rem 0;
+
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    h1 {
+      font-weight: normal;
+    }
+  }
+  .featured-work-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+footer {
+  padding: 2rem 0;
+  .footer-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      svg {
+        font-size: 1.5rem;
+        color: #21243d;
+      }
+    }
+  }
+}

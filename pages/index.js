@@ -1,8 +1,26 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { Card } from "../components/Card/Cards";
 
 export default function Home() {
+  const works = [
+    {
+      title: "Druve",
+      description: "Advertize Across WhatsApp Statuses",
+      image: require("../assets/images/druve.png"),
+      link: "https://druve.com.ng",
+      tools: "ReactJS, NextJS, SCSS",
+    },
+    {
+      title: "Ajebuta.com",
+      description:
+        "Connect customers to nearby service providers, professionals",
+      image: require("../assets/images/ajebuta.png"),
+      link: "https://ajebuta.com",
+      tools: "ReactJS, SCSS",
+    },
+  ];
   return (
     <div>
       <Head>
@@ -11,21 +29,71 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={"main"}>
-        <h1 className={"title"}>I am Dellyson</h1>
-        <p className={"description"}>Welcome to my website!</p>
-        <div className={"grid"}>
-          <article className={"styles"}>
-            <h1>A little information about me</h1>
-            <p>
-              I am self-motivated Software Developer looking forward to seek a
-              position in a reputable company where I can subsequently enhance
-              and use my skills, outstanding competencies and knowledge gained
-              over the years to work on the intervention projects, amongst
-              others.
-            </p>
-          </article>
+      <header className="header">
+        <div className="container">
+          <div className="header-content">
+            <div className="side-one">
+              <h1>Hi, I am Isiaka Lukman Bamidele, Frontend Developer</h1>
+              <p>
+                I am a frontend developer with a passion for creating beautiful
+                and intuitive user experiences. I love to create things that
+                make a difference. I am currently working at Druve as a Software
+                Engineer in the Product Development team. I am also a member of
+                the Facebook developer Circle and a member of the Google
+                Developer Group.
+              </p>
+              <Link href="/resume-download">
+                <a className="btn btn-primary"> Download Resume</a>
+              </Link>
+            </div>
+            <div className="side-two">
+              <Image
+                src={require("../assets/images/logo.png")}
+                alt="profile"
+                // width={"500"}
+                // height={300}
+                layout="responsive"
+              />
+            </div>
+          </div>
         </div>
+      </header>
+      <main className={"main"}>
+        <section className="recent-posts-section">
+          <div className="container">
+            <div className="section-title">
+              <h4>Recent Posts</h4>{" "}
+              <Link href={"/blog"}>
+                <a>See more</a>
+              </Link>
+            </div>
+            <div className="posts-container">
+              <Card variant={"post"} />
+              <Card variant={"post"} />
+            </div>
+          </div>
+        </section>
+        <section className="featured-work-section">
+          <div className="container">
+            <div className="section-title">
+              <h1>Featured Works</h1>
+            </div>
+            <div className="featured-work-container">
+              {works.map((work) => (
+                <Card
+                  variant={"project"}
+                  date={work.date}
+                  content={work.description}
+                  tools={work.tools}
+                  path={work.link}
+                  title={work.title}
+                  key={work.title}
+                  workImage={work.image}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );

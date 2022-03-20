@@ -1,0 +1,97 @@
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: transparent;
+  border-radius: 2px;
+  outline: transparent;
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 1rem;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+  }
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  &.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  &.btn-default:hover,
+  &.btn-default:focus,
+  &.btn-default:active,
+  &.btn-default.active,
+  &.btn-default.focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+  }
+  &.btn-default:active,
+  &.btn-default.active,
+  &.btn-default:focus {
+    background-image: none;
+  }
+  &.btn-default.disabled,
+  &.btn-default[disabled],
+  fieldset[disabled] &.btn-default {
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  &.btn-default.disabled:hover,
+  &.btn-default[disabled]:hover,
+  fieldset[disabled] &.btn-default:hover,
+  &.btn-default.disabled:focus,
+  &.btn-default[disabled]:focus,
+  fieldset[disabled] &.btn-default:focus,
+  &.btn-default.disabled:active,
+  &.btn-default[disabled]:active,
+  fieldset[disabled] &.btn-default:active,
+  &.btn-default.disabled.active,
+  &.btn-default[disabled].active,
+  fieldset[disabled] &.btn-default.active {
+    background-color: #fff;
+    border-color: #ccc;
+  }
+
+  &.btn-primary {
+    color: #fff;
+    background-color: #ff6464;
+    border-color: #ff6464;
+    &:hover {
+      background-color: #ff5252;
+      border-color: #ff5252;
+    }
+  }
+}
