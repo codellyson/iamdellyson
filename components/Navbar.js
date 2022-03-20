@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "./../assets/images/iamdellyson.jpg";
+import Logo from "../assets/images/iamdellyson.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRouter } from "next/router";
 function Navbar() {
