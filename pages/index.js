@@ -1,26 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { works } from "../assets/data/portfolio";
 import { Card } from "../components/Card/Cards";
 
 export default function Home() {
-  const works = [
-    {
-      title: "Druve",
-      description: "Advertize Across WhatsApp Statuses",
-      image: require("../assets/images/druve.png"),
-      link: "https://druve.com.ng",
-      tools: "ReactJS, NextJS, SCSS",
-    },
-    {
-      title: "Ajebuta.com",
-      description:
-        "Connect customers to nearby service providers, professionals",
-      image: require("../assets/images/ajebuta.png"),
-      link: "https://ajebuta.com",
-      tools: "ReactJS, SCSS",
-    },
-  ];
+  // const works = [
+  //   {
+  //     title: "Druve",
+  //     description: "Advertize Across WhatsApp Statuses",
+  //     image: require("../assets/images/druve.png"),
+  //     link: "https://druve.com.ng",
+  //     tools: "ReactJS, NextJS, SCSS",
+  //   },
+  //   {
+  //     title: "Ajebuta.com",
+  //     description:
+  //       "Connect customers to nearby service providers, professionals",
+  //     image: require("../assets/images/ajebuta.png"),
+  //     link: "https://ajebuta.com",
+  //     tools: "ReactJS, SCSS",
+  //   },
+  // ];
   return (
     <div>
       <Head>
@@ -42,9 +43,17 @@ export default function Home() {
                 the Facebook developer Circle and a member of the Google
                 Developer Group.
               </p>
-              <Link href="/resume-download">
-                <a className="btn btn-primary"> Download Resume</a>
-              </Link>
+              {/* <Link href="/resume-download"> */}
+              <a
+                className="btn btn-primary"
+                href="https://drive.google.com/file/d/1avyjaMjElkJzn94VH4hoxU7XHH0_Y14k/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                Download Resume
+              </a>
+              {/* </Link> */}
             </div>
             <div className="side-two">
               <Image
@@ -57,7 +66,7 @@ export default function Home() {
         </div>
       </header>
       <main className={"main"}>
-        <section className="recent-posts-section">
+        {/* <section className="recent-posts-section">
           <div className="container">
             <div className="section-title">
               <h4>Recent Posts</h4>{" "}
@@ -70,25 +79,27 @@ export default function Home() {
               <Card variant={"post"} />
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="featured-work-section">
           <div className="container">
             <div className="section-title">
               <h1>Featured Works</h1>
             </div>
             <div className="featured-work-container">
-              {works.map((work) => (
-                <Card
-                  variant={"project"}
-                  date={work.date}
-                  content={work.description}
-                  tools={work.tools}
-                  path={work.link}
-                  title={work.title}
-                  key={work.title}
-                  workImage={work.image}
-                />
-              ))}
+              {works
+                .map((work) => (
+                  <Card
+                    variant={"project"}
+                    date={work.date}
+                    content={work.description}
+                    tools={work.tools}
+                    path={work.link}
+                    title={work.title}
+                    key={work.title}
+                    workImage={work.image}
+                  />
+                ))
+                .slice(0, 2)}
             </div>
           </div>
         </section>
